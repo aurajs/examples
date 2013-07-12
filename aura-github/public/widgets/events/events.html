@@ -1,0 +1,19 @@
+<ul class="list activity-list">
+  <% _.each(events, function(event) { %>
+    <li class="list-item">
+      <p class="item-time"><%= event.time %></p>
+      <img class="actor-avatar" src="<%= event.actor.avatar_url %>" width="40" height="40" />
+      <div class="item-wrapper">
+        <p class="item-title"><%= event.title %></p>
+
+        <% if (event.content) { %>
+        <div class="item-content">
+          <blockquote>
+            <%= event.content %>
+          </blockquote>
+        </div>
+        <% } %>
+      </div>
+    </li>
+  <% }); %>
+</ul>

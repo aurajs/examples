@@ -1,0 +1,18 @@
+<h4>Choose a repo and an issue number</h4>
+
+<form class='form form-inline'>
+  <select name="repo">
+    <% _.map(repos, function(repo) { %>
+    <option><%= repo %></option>
+    <% }); %>
+  </select>
+
+  <input type='text' name='number' />
+  
+  <input type='submit' name='start' value='start' class='btn btn-primary' />
+  <input type='submit' name='stop' value='stop' class='btn btn-danger' />
+
+  <input type="checkbox" name="reset" value="1" /> Reset on start ?
+</form>
+
+

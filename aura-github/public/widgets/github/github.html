@@ -1,0 +1,6 @@
+<ul class="nav nav-pills">
+  <% _.each(orgs, function(org) { %>
+  <li><a href="#<%= org %>" data-org='<%= org %>'><%= org %></a></li>
+  <% }); %>
+</ul>
+

@@ -1,0 +1,40 @@
+<div class="org-header clearfix">
+  <img class="pull-left" src="<%= org.avatar_url %>" width="100" height="100">
+  <h1><%= org.login %></h1>
+</div>
+
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#repos" data-toggle="tab">Repositories</a></li>
+  <li><a href="#users" data-toggle="tab">Members</a></li>
+  <li><a href="#events" data-toggle="tab">Events</a></li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="repos">
+    <div class="row">
+      <div class="span3">
+        <ul class="nav nav-tabs nav-stacked" data-aura-widget="repos" data-aura-org="<%= org.login %>"></ul>
+      </div>
+
+      <div class="span9">
+        <ul class="nav nav-pills">
+          <li class="active"><a href="#readme" data-toggle="tab">Readme</a></li>
+          <li><a href="#issues" data-toggle="tab">Issues</a></li>
+        </ul>
+
+        <div class="tab-content">
+          <div class="tab-pane active" id="readme" data-aura-widget="readme"  data-aura-org="<%= org.login %>"></div>
+          <div class="tab-pane" id="issues">
+            <ul class="unstyled list issues-list" data-aura-widget="issues"  data-aura-org="<%= org.login %>"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="users">
+    <ul class="thumbnails well" data-aura-widget="members" data-aura-org="<%= org.login %>"></ul>
+  </div>
+
+  <div class="tab-pane" id="events" data-aura-widget="events"  data-aura-org="<%= org.login %>"></div>
+</div>

@@ -1,0 +1,22 @@
+<% if (displayFilters) { %>
+
+<% _.each(availableParams, function(vals, key) { %>
+<li>
+  <strong><%= key %></strong>
+  <hr/>
+  <% _.each(vals, function(val) { %>
+  <button data-param='<%= key %>' 
+        data-value='<%= val %>' 
+        class='btn btn-mini <% if (val == params[key]) { %>btn-primary<% } %>'
+  ><%= val %></button>
+  <% }); %>  
+</li>
+<% }); %>
+
+<% } %>
+
+<% _.each(repos, function(repo) { %>
+<li>
+  <a href='#' class="repo" data-name="<%= repo.name %>" data-full-name="<%= repo.full_name %>"><%= repo.name %></a>
+</li>
+<% }); %>

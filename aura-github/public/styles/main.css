@@ -1,0 +1,54 @@
+body {
+  padding: 20px 0;
+}
+
+.org-header {
+  margin-bottom: 20px;
+}
+
+.org-header h1 {
+  margin: 0 0 0 110px;
+  line-height: 100px;
+}
+
+.list {
+  border-top: 1px solid #eee;
+  margin: 0;
+}
+
+.list li {
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.list small {
+  color: #666;
+  font-size: 13px;
+  line-height: 24px;
+}
+
+.issue-list h5 {
+  margin: 0 0 5px 0;
+  line-height: 1;
+}
+
+.activity-list .list-item {
+  list-style: none;
+  overflow: hidden;
+}
+
+.activity-list .item-time {
+  color: #ccc;
+  line-height: 1;
+  margin-bottom: 5px;
+  font-size: 13px;
+}
+
+.activity-list .actor-avatar {
+  display: block;
+  float: left;
+}
+
+.activity-list .item-wrapper {
+  margin-left: 50px;
+}

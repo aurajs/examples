@@ -1,0 +1,12 @@
+{
+  "name": "aura-todos",
+  "version": "0.1.0",
+  "dependencies": {
+    "aura" : "latest",
+    "jquery": "1.8.x",
+    "backbone.localStorage" : "latest",
+    "backbone": "0.9.10",
+    "underscore": "latest",
+    "require-handlebars-plugin": "latest"
+  }
+}

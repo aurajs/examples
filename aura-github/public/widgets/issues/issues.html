@@ -1,0 +1,28 @@
+<% if (displayFilters) { %>
+
+<% _.each(availableParams, function(vals, key) { %>
+<li>
+  <strong><%= key %></strong>
+  <hr/>
+  <% _.each(vals, function(val) { %>
+  <button data-param='<%= key %>' 
+        data-value='<%= val %>' 
+        class='btn btn-mini <% if (val == params[key]) { %>btn-primary<% } %>'
+  ><%= val %></button>
+  <% }); %>  
+</li>
+<% }); %>
+
+<% } %>
+
+<% _.each(issues, function(issue) { %>
+<li>
+  <h5>#<%= issue.number %> : <%= issue.title %></h5>
+  <small>
+    <img src="<%= issue.user.avatar_url %>" width="24" height="24" /> <%= issue.user.login %>
+    created <%= issue.created_at %>
+    /
+    updated <%= issue.updated_at %>
+  </small>
+</li>
+<% }); %>

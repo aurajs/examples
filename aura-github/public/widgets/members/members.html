@@ -1,0 +1,6 @@
+<% _.each(members, function(member) { %>
+<li class="thumbnail">
+  <img src="<%= member.avatar_url %>" width="56" height="56" />
+  <%= member.login %>
+</li>
+<% }); %>

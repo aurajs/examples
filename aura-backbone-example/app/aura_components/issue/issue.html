@@ -1,0 +1,12 @@
+<% if (issue.error) { %>
+<div class='alert alert-error'>
+  <a class="close" data-dismiss="alert">&times;</a>
+  <%= issue.error %>
+</div>
+<% } else { %>
+<div class="well">
+  <a class="close pull-right">&times;</a>
+  <h5>#<%= issue.number %> : <%= issue.title %></h5>
+  <p><%= issue.summary %></p>
+</div>  
+<% } %>

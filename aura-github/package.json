@@ -1,0 +1,11 @@
+{
+  "author": "Stephane Bellity",
+  "name": "aura-github",
+  "version": "0.1.0",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "0.4.0",
+    "grunt-php": "0.1.0",
+    "grunt-contrib-requirejs": "~0.3.0"
+  }
+}

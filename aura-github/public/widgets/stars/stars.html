@@ -1,0 +1,8 @@
+<% _.each(starred, function(repo) { %>
+<li>
+  <a data-repo='<%= repo.full_name %>'>
+    <h4><%= repo.name %></h4>
+    <p><%= repo.description %></p>
+  </a>
+</li>
+<% });%>
