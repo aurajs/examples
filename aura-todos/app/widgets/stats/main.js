@@ -1,18 +1,20 @@
-define(['hbs!./stats'], function(template) {
+define(['hbs!./stats'], function (template) {
+  'use strict';
+
   return {
     type: 'Backbone',
     events: {
       'click button': 'clearCompleted'
     },
-    initialize: function() {
+    initialize: function () {
       this.render();
-      this.sandbox.on('tasks.stats', _.bind(this.render, this));
+      this.sandbox.on('tasks.stats', this.render.bind(this));
     },
-    render: function(stats) {
+    render: function (stats) {
       this.html(template(stats || {}));
     },
-    clearCompleted: function() {
+    clearCompleted: function () {
       this.sandbox.emit('tasks.clear');
     }
-  }
+  };
 });

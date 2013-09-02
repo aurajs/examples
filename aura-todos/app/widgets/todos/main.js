@@ -1,11 +1,11 @@
-define(['underscore', 'hbs!./list', 'hbs!./item'], function(_, listTemplate, itemTemplate) {
+define(['underscore', 'hbs!./list', 'hbs!./item'], function (_, listTemplate, itemTemplate) {
+  'use strict';
 
   return {
-    
     type: 'Backbone',
 
     events: {
-      'click [data-task-action]':  function(e) {
+      'click [data-task-action]':  function (e) {
         var data = this.sandbox.dom.data(e.target);
         var task = this.tasks[data.taskId];
         var action = data.taskAction && data.taskAction.toLowerCase();
@@ -16,45 +16,45 @@ define(['underscore', 'hbs!./list', 'hbs!./item'], function(_, listTemplate, ite
     },
 
 
-    initialize: function() {
+    initialize: function () {
       this.tasks = {};
       this.taskViews = {};
       var sandbox = this.sandbox;
       var handle  = _.bind(this.handleTaskAction, this);
+
       _.bindAll(this);
-      var sandbox = this.sandbox;
-      _.each(['add', 'destroy', 'toggle'], function(action) {
+      _.each(['add', 'destroy', 'toggle'], function (action) {
         sandbox.on('tasks.' + action, handle);
-      })
+      });
       sandbox.on('tasks.clear', this.clearCompleted);
       this.render();
     },
 
-    render: function() {
+    render: function () {
       this.html(listTemplate());
       this.$list = this.$el.find('ul');
     },
 
-    getTask: function(task) {
+    getTask: function (task) {
       if (typeof task === 'string') {
         return this.tasks[task];
       }
       return task;
     },
 
-    getCompletedTasks: function() {
-      var completed = _.select(_.values(this.tasks), function(task) { 
+    getCompletedTasks: function () {
+      var completed = _.select(_.values(this.tasks), function (task) {
         return task.done;
       });
       return completed;
     },
 
-    getStats: function() {
+    getStats: function () {
       var total     = _.values(this.tasks).length;
       var completed = this.getCompletedTasks().length;
       var remaining = total - completed;
       var stats = {
-        total:     total, 
+        total:     total,
         remaining: remaining,
         completed: completed
       };
@@ -62,28 +62,30 @@ define(['underscore', 'hbs!./list', 'hbs!./item'], function(_, listTemplate, ite
       return stats;
     },
 
-    clearCompleted: function() {
-      _.each(this.getCompletedTasks(), function(task) {
+    clearCompleted: function () {
+      _.each(this.getCompletedTasks(), function (task) {
         this.sandbox.emit('tasks.destroy', task, 'destroy');
       }.bind(this));
     },
 
-    handleTaskAction: function(task, action) {
+    handleTaskAction: function (task, action) {
       var fn = this[action + 'Task'];
       if (fn) {
         task = this.getTask(task);
-        fn && fn(task);
-        this.getStats();        
+        if (fn) {
+          fn(task);
+        }
+        this.getStats();
       }
     },
 
-    addTask: function(task) {
+    addTask: function (task) {
       var view = this.taskViews[task.id] = $(itemTemplate(task));
       this.tasks[task.id] = task;
       this.$list.append(view);
     },
 
-    toggleTask: function(task) {
+    toggleTask: function (task) {
       task.done = !task.done;
       var selector = [
         '[type="checkbox"]',
@@ -93,12 +95,13 @@ define(['underscore', 'hbs!./list', 'hbs!./item'], function(_, listTemplate, ite
       this.sandbox.dom.find('input' + selector, this.$el).prop('checked', task.done);
     },
 
-    destroyTask: function(task) {
+    destroyTask: function (task) {
       var view = this.taskViews[task.id];
-      view && view.remove();
-      delete this.tasks[task.id];  
+      if (view) {
+        view.remove();
+      }
+      delete this.tasks[task.id];
       delete this.taskViews[task.id];
     }
-
-  }
+  };
 });

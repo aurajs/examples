@@ -1,0 +1,12 @@
+{
+  "name": "aura-todos",
+  "version": "0.1.0",
+  "dependencies": {
+    "aura": "latest",
+    "backbone": "~1.0.0",
+    "underscore": "~1.5.0",
+    "require-handlebars-plugin": "latest",
+    "backbone.localStorage": "latest",
+    "todomvc-common": "~0.1.8"
+  }
+}

@@ -1,15 +1,14 @@
 define({
-  
-  name: "Backbone LocalStorage",
+  name: 'Backbone LocalStorage',
 
   require: {
     paths: {
-      'backbone.localStorage' : 'components/backbone.localStorage/backbone.localStorage'
+      'backbone.localStorage': 'bower_components/backbone.localStorage/backbone.localStorage'
     }
   },
 
-  initialize: function(app) {
+  initialize: function (app) {
+    'use strict';
     app.sandbox.data.Store = require('backbone').LocalStorage;
   }
-
 });
