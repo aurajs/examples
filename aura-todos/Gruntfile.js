@@ -1,4 +1,7 @@
 /*global module:true*/
+'use strict';
+
+var LIVERELOAD_PORT = 35709;
 var lrSnippet = require('grunt-contrib-livereload/lib/utils').livereloadSnippet;
 var mountFolder = function (connect, dir) {
   return connect.static(require('path').resolve(dir));
@@ -6,10 +9,7 @@ var mountFolder = function (connect, dir) {
 
 
 module.exports = function (grunt) {
-
-  'use strict';
-
-  require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+  require('load-grunt-tasks')(grunt);
 
   grunt.initConfig({
 
@@ -30,13 +30,15 @@ module.exports = function (grunt) {
         tasks: ['handlebars']
       },
       livereload: {
+        options: {
+          livereload: LIVERELOAD_PORT
+        },
         files: [
           'app/*.html',
           '{.tmp,app}/styles/*.css',
           '{.tmp,app}/scripts/*.js',
           'app/images/*.{png,jpg,jpeg}'
-        ],
-        tasks: ['livereload']
+        ]
       }
     },
 
@@ -50,11 +52,11 @@ module.exports = function (grunt) {
     handlebars: {
       compile: {
         files: {
-          "app/scripts/templates.js" : ["app/widgets/**/*.hbs"]
+          'app/scripts/templates.js': ['app/widgets/**/*.hbs']
         },
         options: {
           wrapped: true,
-          namespace: "Aura.templates",
+          namespace: 'Aura.templates',
           processName: function (filename) {
             return filename.replace(/^app\/widgets\//, '').replace(/\.hbs$/, '');
           }
@@ -158,7 +160,7 @@ module.exports = function (grunt) {
 
     concat: {
       options: {
-        separator: "\n\n\n\n//--------\n\n\n"
+        separator: '\n\n\n\n//--------\n\n\n'
       },
       dist: {
         src: ['app/widgets/**/*.js'],
@@ -167,8 +169,6 @@ module.exports = function (grunt) {
     }
 
   });
-
-  grunt.renameTask('regarde', 'watch');
 
   grunt.renameTask('mincss', 'cssmin');
 
@@ -202,5 +202,4 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('default', ['build']);
-
 };
