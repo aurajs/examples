@@ -1,4 +1,6 @@
 define(['hbs!./new-todo'], function (template) {
+  'use strict';
+
   return {
     type: 'Backbone',
 
@@ -28,5 +30,5 @@ define(['hbs!./new-todo'], function (template) {
       this.$input = this.$el.find('input');
       return this;
     }
-  }
+  };
 });

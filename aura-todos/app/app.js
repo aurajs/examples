@@ -1,6 +1,6 @@
 define(['bower_components/aura/lib/aura'], function (Aura) {
   'use strict';
-  Aura()
+  new Aura()
     .use('extensions/aura-backbone')
     .use('extensions/aura-localstorage')
     .use('extensions/aura-handlebars')
