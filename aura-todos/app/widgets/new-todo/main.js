@@ -1,16 +1,16 @@
-define(['hbs!./new-todo'], function(template) {
+define(['hbs!./new-todo'], function (template) {
   return {
-    type: "Backbone",
+    type: 'Backbone',
 
     events: {
-      'keyup input':  'createNewTask'
+      'keyup input': 'createNewTask'
     },
 
-    initialize: function() {
+    initialize: function () {
       this.render();
     },
 
-    createNewTask: function(e) {
+    createNewTask: function (e) {
       if (e.which === 13) {
         var val = this.$input.val();
         if (val) {
@@ -23,7 +23,7 @@ define(['hbs!./new-todo'], function(template) {
       }
     },
 
-    render: function() {
+    render: function () {
       this.html(template());
       this.$input = this.$el.find('input');
       return this;

@@ -1,31 +1,34 @@
-define(function() {
-  return function(app) {
+define(function () {
+  'use strict';
+  return function (app) {
     var _ = app.core.util._;
     var historyStarted = false;
     var Backbone;
     return {
       require: {
-        paths: { 
-          backbone: 'components/backbone/backbone',
-          underscore: 'components/underscore/underscore' 
+        paths: {
+          backbone: 'bower_components/backbone/backbone',
+          underscore: 'bower_components/underscore/underscore'
         },
         shim: {
           backbone: { exports: 'Backbone', deps: ['underscore', 'jquery'] }
         }
       },
-      initialize: function(app) {
+
+      initialize: function (app) {
         Backbone = require('backbone');
-        app.core.mvc    = Backbone;
+        app.core.mvc = Backbone;
         app.sandbox.mvc = Backbone;
         app.core.registerWidgetType('Backbone', Backbone.View.prototype);
       },
-      afterAppStart: function(app) {
+
+      afterAppStart: function () {
         if (!historyStarted) {
-          _.delay(function() {
-            Backbone.history.start();  
+          _.delay(function () {
+            Backbone.history.start();
           }, 200);
         }
       }
-    }
-  }
+    };
+  };
 });

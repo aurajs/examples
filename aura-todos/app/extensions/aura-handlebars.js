@@ -2,10 +2,10 @@ define({
   name: 'The Handle of the Bars',
   require: {
     paths:  {
-      handlebars:     'components/require-handlebars-plugin/Handlebars',
-      hbs:            'components/require-handlebars-plugin/hbs',
-      i18nprecompile: 'components/require-handlebars-plugin/hbs/i18nprecompile',
-      json2 :         'components/require-handlebars-plugin/hbs/json2'
+      handlebars: 'bower_components/require-handlebars-plugin/Handlebars',
+      hbs: 'bower_components/require-handlebars-plugin/hbs',
+      i18nprecompile: 'bower_components/require-handlebars-plugin/hbs/i18nprecompile',
+      json2: 'bower_components/require-handlebars-plugin/hbs/json2'
     },
     hbs: {
       disableI18n: true,
@@ -14,8 +14,10 @@ define({
     }
   },
 
-  initialize: function(app) {
+  initialize: function (app) {
+    'use strict';
+
     var Handlebars = require('handlebars');
     app.core.template.hbs = Handlebars;
   }
-})
+});
